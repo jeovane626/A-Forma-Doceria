@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Finalizar Pedido - Á Forma, Doceria</title>
+
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+
+<body>
+
+    <header>
+
+        <img
+            src="imagens/logo.jpg"
+            alt="Logo da Á Forma, Doceria"
+        >
+
+        <h1>Á Forma, Doceria</h1>
+
+        <h2>Finalizar Pedido</h2>
+
+    </header>
+
+
+    <main>
+
+        <section
+            class="formulario"
+            id="areaFormulario">
+
+            <form id="formularioPedido">
+
+                <h2>Dados do Cliente</h2>
+
+                <label for="nome">
+                    NOME
+                </label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Digite seu nome"
+                    required
+                >
+
+
+                <label for="telefone">
+                    TELEFONE
+                </label>
+
+                <input
+                    type="tel"
+                    id="telefone"
+                    name="telefone"
+                    placeholder="(00) 00000-0000"
+                    pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}"
+                    required
+                >
+
+
+                <h2>Endereço de Entrega</h2>
+
+
+                <label for="cep">
+                    CEP
+                </label>
+
+                <input
+                    type="text"
+                    id="cep"
+                    name="cep"
+                    placeholder="00000-000"
+                    inputmode="numeric"
+                    maxlength="9"
+                    required
+                >
+
+
+                <label for="rua">
+                    RUA
+                </label>
+
+                <input
+                    type="text"
+                    id="rua"
+                    name="rua"
+                    placeholder="Nome da rua"
+                    required
+                >
+
+
+                <label for="numero">
+                    NÚMERO
+                </label>
+
+                <input
+                    type="text"
+                    id="numero"
+                    name="numero"
+                    placeholder="Número da residência"
+                    required
+                >
+
+
+                <label for="complemento">
+                    COMPLEMENTO
+                </label>
+
+                <input
+                    type="text"
+                    id="complemento"
+                    name="complemento"
+                    placeholder="Apartamento, casa, bloco..."
+                >
+
+
+                <label for="bairro">
+                    BAIRRO
+                </label>
+
+                <input
+                    type="text"
+                    id="bairro"
+                    name="bairro"
+                    placeholder="Nome do bairro"
+                    required
+                >
+
+
+                <label for="cidade">
+                    CIDADE
+                </label>
+
+                <input
+                    type="text"
+                    id="cidade"
+                    name="cidade"
+                    placeholder="Nome da cidade"
+                    required
+                >
+
+
+                <h2>
+                    Escolha uma forma de pagamento
+                </h2>
+
+
+                <div class="pagamento">
+
+                    <div>
+
+                        <input
+                            type="radio"
+                            id="pix"
+                            name="pagamento"
+                            value="PIX"
+                            required
+                        >
+
+                        <label for="pix">
+                            PIX
+                        </label>
+
+                    </div>
+
+
+                    <div>
+
+                        <input
+                            type="radio"
+                            id="cartao"
+                            name="pagamento"
+                            value="Cartão"
+                        >
+
+                        <label for="cartao">
+                            CARTÃO
+                        </label>
+
+                    </div>
+
+
+                    <div>
+
+                        <input
+                            type="radio"
+                            id="dinheiro"
+                            name="pagamento"
+                            value="Dinheiro"
+                        >
+
+                        <label for="dinheiro">
+                            DINHEIRO
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <aside
+            class="resumo"
+            id="resumoPedido">
+
+            <h2>
+                Resumo do Pedido
+            </h2>
+
+
+            <div id="produtosCheckout"></div>
+
+
+            <hr>
+
+
+            <div class="valores">
+
+                <p>
+                    Subtotal:
+                    <span id="subtotalCheckout"></span>
+                </p>
+
+
+                <p>
+                    Frete:
+                    <span id="freteCheckout"></span>
+                </p>
+
+
+                <p class="Total">
+
+                    <strong>
+                        Total:
+                    </strong>
+
+                    <strong id="totalCheckout"></strong>
+
+                </p>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+
+    <div
+        class="acoes"
+        id="acoesPedido">
+
+        <a href="carrinho.html">
+
+            <button
+                type="button"
+                class="voltar">
+                Voltar para o Carrinho
+            </button>
+
+        </a>
+
+
+        <button
+            type="submit"
+            form="formularioPedido"
+            id="confirmarPedido"
+            class="confirmar">
+            Confirmar Pedido
+        </button>
+
+    </div>
+
+
+    <script src="js/checkout.js"></script>
+
+</body>
+
+</html>

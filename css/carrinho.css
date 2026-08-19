@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fdf7f0;
+    color: #4a2c2a;
+    min-height: 100vh;
+}
+
+header {
+    background: #fff8f0;
+    padding: 30px;
+    text-align: center;
+    border-bottom: 3px solid #d8b17a;
+}
+
+header h1 {
+    color: #7a4b28;
+    font-size: 32px;
+}
+
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 30px;
+    align-items: start;
+}
+
+.carrinho-vazio {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.carrinho-vazio p {
+    margin-bottom: 15px;
+    color: #666;
+    font-size: 17px;
+}
+
+.carrinho-vazio a {
+    text-decoration: none;
+}
+
+.produtos {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.produtos article {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 15px 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    align-items: center;
+}
+
+.produtos article img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    grid-row: span 5;
+}
+
+.produtos article h2 {
+    color: #7a4b28;
+    font-size: 22px;
+}
+
+.produtos article p {
+    color: #555;
+}
+
+.produtos article p:nth-of-type(2) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.produtos article p:nth-of-type(3) {
+    font-weight: bold;
+    color: #b76e1b;
+}
+
+.produtos article button {
+    background: #c98a42;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.produtos article button:hover {
+    background: #a66b2d;
+}
+
+.produtos article .diminuir,
+.produtos article .aumentar {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.produtos article .remover {
+    width: fit-content;
+    padding: 10px 18px;
+    background: #8f3f32;
+}
+
+.produtos article .remover:hover {
+    background: #6f2f25;
+}
+
+aside {
+    background: white;
+    padding: 25px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 20px;
+}
+
+aside h3 {
+    color: #7a4b28;
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #d8b17a;
+}
+
+aside p {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    color: #555;
+}
+
+aside p:last-child {
+    font-size: 20px;
+    font-weight: bold;
+    color: #7a4b28;
+    border-top: 1px solid #ead8c8;
+    padding-top: 15px;
+}
+
+button {
+    background: #c98a42;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #a66b2d;
+}
+
+.voltar,
+.Finalizar {
+    margin-bottom: 40px;
+}
+
+.voltar {
+    margin-left: 5%;
+    background: #e8d5c4;
+    color: #6b3e26;
+}
+
+.voltar:hover {
+    background: #d9bea7;
+}
+
+.Finalizar {
+    margin-left: 10px;
+    background: #6b3e26;
+}
+
+.Finalizar:hover {
+    background: #4f2d1d;
+}
+
+@media (max-width: 800px) {
+
+    main {
+        width: 94%;
+        grid-template-columns: 1fr;
+    }
+
+    aside {
+        position: static;
+    }
+
+    .produtos article {
+        grid-template-columns: 100px 1fr;
+    }
+
+    .produtos article img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    header {
+        padding: 25px 15px;
+    }
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    main {
+        margin-top: 25px;
+    }
+
+    .produtos article {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .produtos article img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .produtos article p:nth-of-type(2) {
+        justify-content: center;
+    }
+
+    .produtos article .remover {
+        width: 100%;
+    }
+
+    .voltar,
+    .Finalizar {
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+    }
+}

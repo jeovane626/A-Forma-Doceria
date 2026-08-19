@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #FAF1DE;
+    color: #4a2c2a;
+}
+
+header {
+    background-color: #fff8f0;
+    padding: 20px;
+    border-bottom: 2px solid #d8b17a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.marca {
+    text-align: center;
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.marca h1 {
+    margin-top: 10px;
+    font-size: 2rem;
+    color: #7a4b28;
+}
+
+.marca p {
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #666;
+}
+
+header > a {
+    text-decoration: none;
+}
+
+.carrinho {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #c98a42;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.carrinho:hover {
+    background-color: #a66b2d;
+}
+
+body > a {
+    display: block;
+    width: fit-content;
+    margin: 30px auto 0;
+    color: #7a4b28;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+body > a:hover {
+    text-decoration: underline;
+}
+
+#Chamar {
+    text-align: center;
+    font-size: 30px;
+    color: #7a4b28;
+    margin-top: 50px;
+}
+
+#pudins {
+    margin-top: 60px;
+}
+
+#pudins h2 {
+    text-align: center;
+    font-size: 36px;
+    color: #7a4b28;
+}
+
+.descricao {
+    text-align: center;
+    margin-top: 15px;
+    color: #666;
+}
+
+.produtos {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.produtos article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.produtos article img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.produtos article h4 {
+    margin-top: 5px;
+    font-size: 24px;
+    color: #7a4b28;
+    text-align: center;
+}
+
+.produtos article p:nth-of-type(1) {
+    font-size: 28px;
+    color: #b76e1b;
+    font-weight: bold;
+}
+
+.produtos article p:nth-of-type(2) {
+    margin-top: 5px;
+    color: #555;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.produtos article button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #c98a42;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.produtos article button:hover {
+    background: #a66b2d;
+}
+
+.vantagens {
+    margin-top: 70px;
+    background: #fff8f0;
+    padding: 40px;
+    text-align: center;
+}
+
+.vantagens h4 {
+    font-size: 24px;
+    color: #7a4b28;
+    margin-bottom: 20px;
+}
+
+.vantagens p {
+    margin: 10px 0;
+    color: #555;
+}
+
+footer {
+    margin-top: 70px;
+    background: #7a4b28;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+footer a {
+    color: white;
+    margin: 20px;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    margin: 20px;
+    color: white;
+}
+
+@media (max-width: 700px) {
+
+    header {
+        flex-direction: column;
+        position: relative;
+        padding-bottom: 30px;
+    }
+
+    .marca {
+        width: 100%;
+    }
+
+    .marca h1 {
+        font-size: 1.7rem;
+    }
+
+    .marca p {
+        padding: 0 60px;
+    }
+
+    .carrinho {
+        top: 20px;
+        right: 20px;
+    }
+
+    #Chamar {
+        font-size: 26px;
+    }
+
+    #pudins h2 {
+        font-size: 30px;
+    }
+
+    .produtos {
+        gap: 25px;
+    }
+
+    .produtos article {
+        width: 90%;
+        max-width: 350px;
+    }
+
+    footer a {
+        display: block;
+        margin: 15px;
+    }
+}

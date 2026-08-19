@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meu Carrinho - Á Forma, Doceria</title>
+
+    <link rel="stylesheet" href="css/carrinho.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Meu Carrinho</h1>
+    </header>
+
+    <main>
+
+        <section
+            id="carrinhoVazio"
+            class="carrinho-vazio">
+
+            <p>
+                Seu carrinho está vazio.
+            </p>
+
+            <p>
+                Que tal experimentar um dos nossos produtos?
+            </p>
+
+            <a href="index.html">
+                <button type="button">
+                    Voltar para a loja
+                </button>
+            </a>
+
+        </section>
+
+
+        <section
+            id="listaProdutos"
+            class="produtos">
+        </section>
+
+
+        <aside>
+
+            <h3>
+                Total do Carrinho
+            </h3>
+
+            <p>
+                Subtotal:
+                <span id="subtotalCarrinho"></span>
+            </p>
+
+            <p>
+                Frete:
+                <span id="freteCarrinho"></span>
+            </p>
+
+            <p>
+                Total Final:
+                <span id="totalCarrinho"></span>
+            </p>
+
+        </aside>
+
+    </main>
+
+
+    <a href="index.html">
+        <button
+            type="button"
+            class="voltar">
+            Continuar comprando
+        </button>
+    </a>
+
+
+    <a
+        href="checkout.html"
+        id="botaoFinalizar">
+        <button
+            type="button"
+            class="Finalizar">
+            Finalizar Compra
+        </button>
+    </a>
+
+
+    <script src="js/carrinho.js"></script>
+
+</body>
+
+</html>
