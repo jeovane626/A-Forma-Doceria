@@ -26,7 +26,9 @@
       </div>
 
       <a href="carrinho.html">
-        <button type="button" class="carrinho">🛒</button>
+        <button type="button" class="carrinho" aria-label="Abrir carrinho">
+          🛒
+        </button>
       </a>
     </header>
 
@@ -40,59 +42,8 @@
 
         <p class="descricao">Descubra a delícia de nossos pudins artesanais!</p>
 
-        <div class="produtos">
-          <article>
-            <img src="imagens/tradicional.jpg" alt="Pudim Tradicional" />
-
-            <h4>Pudim Tradicional</h4>
-
-            <p>R$ 10,00</p>
-
-            <p>
-              O queridinho da casa! Nosso Pudim Tradicional combina ingredientes
-              de alta qualidade, preparo artesanal e uma generosa calda de
-              caramelo para entregar um sabor inesquecível.
-            </p>
-
-            <button type="button" class="adicionar-carrinho" data-id="1">
-              Adicionar ao Carrinho
-            </button>
-          </article>
-
-          <article>
-            <img src="imagens/Geleia.jpg" alt="Pudim de Geleia de Morango" />
-
-            <h4>Pudim de Geleia de Morango</h4>
-
-            <p>R$ 11,50</p>
-
-            <p>
-              A receita tradicional da casa com uma deliciosa cobertura de
-              geleia de morango.
-            </p>
-
-            <button type="button" class="adicionar-carrinho" data-id="2">
-              Adicionar ao Carrinho
-            </button>
-          </article>
-
-          <article>
-            <img src="imagens/picole.jpg" alt="Picolé de Pudim" />
-
-            <h4>Picolé de Pudim</h4>
-
-            <p>R$ 5,00</p>
-
-            <p>
-              Experimente o Picolé de Pudim: cremoso, refrescante e coberto com
-              o delicioso sabor do caramelo. Uma sobremesa perfeita para
-              qualquer momento do dia!
-            </p>
-
-            <button type="button" class="adicionar-carrinho" data-id="3">
-              Adicionar ao Carrinho
-            </button>
-          </article>
+        <div class="produtos" id="listaProdutosLoja">
+          <p id="carregandoProdutos">Carregando produtos...</p>
         </div>
       </section>
     </main>
@@ -111,11 +62,19 @@
     </div>
 
     <footer>
-      <a href="https://www.instagram.com/aformadoceria.ofc" target="_blank">
+      <a
+        href="https://www.instagram.com/aformadoceria.ofc"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Instagram
       </a>
 
-      <a href="https://wa.me/558192519761" target="_blank">
+      <a
+        href="https://wa.me/558192519761"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Fale conosco no WhatsApp
       </a>
 
@@ -124,6 +83,7 @@
       </p>
     </footer>
 
+    <script src="js/config.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

@@ -8,6 +8,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #FAF1DE;
     color: #4a2c2a;
+    min-height: 100vh;
 }
 
 header {
@@ -15,12 +16,14 @@ header {
     padding: 20px;
     border-bottom: 2px solid #d8b17a;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .marca {
     text-align: center;
+    max-width: 700px;
 }
 
 .logo {
@@ -40,6 +43,7 @@ header {
     margin-top: 8px;
     font-size: 1rem;
     color: #666;
+    line-height: 1.5;
 }
 
 header > a {
@@ -83,6 +87,11 @@ body > a:hover {
     font-size: 30px;
     color: #7a4b28;
     margin-top: 50px;
+    padding: 0 20px;
+}
+
+main {
+    width: 100%;
 }
 
 #pudins {
@@ -93,12 +102,15 @@ body > a:hover {
     text-align: center;
     font-size: 36px;
     color: #7a4b28;
+    padding: 0 20px;
 }
 
 .descricao {
     text-align: center;
     margin-top: 15px;
     color: #666;
+    padding: 0 20px;
+    line-height: 1.5;
 }
 
 .produtos {
@@ -161,6 +173,7 @@ body > a:hover {
     font-size: 18px;
     cursor: pointer;
     transition: 0.3s;
+    margin-top: auto;
 }
 
 .produtos article button:hover {
@@ -170,7 +183,7 @@ body > a:hover {
 .vantagens {
     margin-top: 70px;
     background: #fff8f0;
-    padding: 40px;
+    padding: 40px 20px;
     text-align: center;
 }
 
@@ -181,8 +194,10 @@ body > a:hover {
 }
 
 .vantagens p {
-    margin: 10px 0;
+    margin: 10px auto;
     color: #555;
+    line-height: 1.5;
+    max-width: 800px;
 }
 
 footer {
@@ -190,7 +205,7 @@ footer {
     background: #7a4b28;
     color: white;
     text-align: center;
-    padding: 30px;
+    padding: 30px 20px;
 }
 
 footer a {
@@ -208,16 +223,35 @@ footer p {
     color: white;
 }
 
-@media (max-width: 700px) {
+#carregandoProdutos {
+    width: 100%;
+    text-align: center;
+    color: #666;
+}
 
+@media (max-width: 900px) {
+    .produtos {
+        gap: 25px;
+    }
+
+    .produtos article {
+        width: calc(50% - 20px);
+        max-width: 340px;
+    }
+}
+
+@media (max-width: 700px) {
     header {
-        flex-direction: column;
-        position: relative;
-        padding-bottom: 30px;
+        padding: 20px 70px 30px 20px;
     }
 
     .marca {
         width: 100%;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
     }
 
     .marca h1 {
@@ -225,16 +259,24 @@ footer p {
     }
 
     .marca p {
-        padding: 0 60px;
+        font-size: 0.95rem;
     }
 
     .carrinho {
         top: 20px;
-        right: 20px;
+        right: 15px;
+        width: 46px;
+        height: 46px;
+        font-size: 21px;
     }
 
     #Chamar {
         font-size: 26px;
+        margin-top: 40px;
+    }
+
+    #pudins {
+        margin-top: 45px;
     }
 
     #pudins h2 {
@@ -243,15 +285,93 @@ footer p {
 
     .produtos {
         gap: 25px;
+        padding: 0 15px;
     }
 
     .produtos article {
-        width: 90%;
-        max-width: 350px;
+        width: 100%;
+        max-width: 380px;
+    }
+
+    .produtos article img {
+        height: 240px;
+    }
+
+    .vantagens {
+        margin-top: 50px;
+        padding: 30px 20px;
+    }
+
+    footer {
+        margin-top: 50px;
     }
 
     footer a {
         display: block;
         margin: 15px;
+    }
+}
+
+@media (max-width: 420px) {
+    header {
+        padding: 18px 60px 25px 15px;
+    }
+
+    .logo {
+        width: 85px;
+        height: 85px;
+    }
+
+    .marca h1 {
+        font-size: 1.45rem;
+    }
+
+    .marca p {
+        font-size: 0.9rem;
+    }
+
+    .carrinho {
+        width: 42px;
+        height: 42px;
+        font-size: 19px;
+        right: 10px;
+        top: 15px;
+    }
+
+    #Chamar {
+        font-size: 23px;
+    }
+
+    #pudins h2 {
+        font-size: 27px;
+    }
+
+    .descricao {
+        font-size: 0.95rem;
+    }
+
+    .produtos article {
+        padding: 16px;
+    }
+
+    .produtos article img {
+        height: 210px;
+    }
+
+    .produtos article h4 {
+        font-size: 21px;
+    }
+
+    .produtos article p:nth-of-type(1) {
+        font-size: 24px;
+    }
+
+    .produtos article button {
+        font-size: 16px;
+        padding: 13px;
+    }
+
+    .vantagens h4 {
+        font-size: 21px;
     }
 }

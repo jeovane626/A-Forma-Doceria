@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redefinir Senha - A Forma Doceria</title>
+    <link rel="stylesheet" href="css/recuperacao.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <section class="card">
+        <img
+          src="imagens/logo.jpg"
+          alt="Logo da Á Forma, Doceria"
+          class="logo"
+        />
+
+        <h1>Redefinir senha</h1>
+
+        <form id="formRedefinir">
+          <label for="novaSenha"> Nova senha </label>
+
+          <input type="password" id="novaSenha" minlength="8" required />
+
+          <label for="confirmarSenha"> Confirmar nova senha </label>
+
+          <input type="password" id="confirmarSenha" minlength="8" required />
+
+          <button type="submit">Salvar nova senha</button>
+        </form>
+
+        <p id="mensagem"></p>
+
+        <a href="login.html"> Voltar para o login </a>
+      </section>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/redefinir-senha.js"></script>
+  </body>
+</html>
