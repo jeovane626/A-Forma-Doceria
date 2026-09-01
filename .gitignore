@@ -14,3 +14,4 @@ npm-debug.log*
 # Sistema operacional
 .DS_Store
 Thumbs.db
+backend/criarAdmin.js
