@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   const listaProdutos = document.getElementById("listaProdutosLoja");
 
   let produtos = [];
-
   let carrinho = [];
 
   try {
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   } catch (erro) {
     console.error("Erro ao carregar carrinho:", erro);
-
     carrinho = [];
   }
 
@@ -39,7 +37,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     if (!produto) {
       console.error("Produto não encontrado:", id);
-
       return;
     }
 
@@ -49,22 +46,15 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     if (produtoExistente) {
       produtoExistente.quantidade += 1;
-
       produtoExistente.nome = produto.nome;
-
       produtoExistente.preco = Number(produto.preco);
-
       produtoExistente.imagem = produto.imagem;
     } else {
       carrinho.push({
         id: Number(produto.id),
-
         nome: produto.nome,
-
         preco: Number(produto.preco),
-
         imagem: produto.imagem || "",
-
         quantidade: 1,
       });
     }
@@ -91,39 +81,37 @@ document.addEventListener("DOMContentLoaded", async function () {
       const article = document.createElement("article");
 
       article.innerHTML = `
+        ${
+          produto.imagem
+            ? `
+              <img
+                src="${produto.imagem}"
+                alt="${produto.nome}"
+              >
+            `
+            : ""
+        }
 
-          ${
-            produto.imagem
-              ? `
-                <img
-                  src="${produto.imagem}"
-                  alt="${produto.nome}"
-                >
-              `
-              : ""
-          }
+        <h4>
+          ${produto.nome}
+        </h4>
 
-          <h4>
-            ${produto.nome}
-          </h4>
+        <p>
+          ${formatarPreco(produto.preco)}
+        </p>
 
-          <p>
-            ${formatarPreco(produto.preco)}
-          </p>
+        <p>
+          ${produto.descricao || ""}
+        </p>
 
-          <p>
-            ${produto.descricao || ""}
-          </p>
-
-          <button
-            type="button"
-            class="adicionar-carrinho"
-            data-id="${produto.id}"
-          >
-            Adicionar ao Carrinho
-          </button>
-
-        `;
+        <button
+          type="button"
+          class="adicionar-carrinho"
+          data-id="${produto.id}"
+        >
+          Adicionar ao Carrinho
+        </button>
+      `;
 
       listaProdutos.appendChild(article);
     });
@@ -136,9 +124,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   try {
-    const resposta = await fetch(
-  `${API_URL}/api/produtos`
-)
+    const resposta = await fetch(`${API_URL}/api/produtos`);
 
     if (!resposta.ok) {
       throw new Error("Não foi possível carregar os produtos.");
@@ -149,9 +135,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     produtos = produtos.map(function (produto) {
       return {
         ...produto,
-
         id: Number(produto.id),
-
         preco: Number(produto.preco),
       };
     });
@@ -169,11 +153,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       if (produto) {
         item.nome = produto.nome;
-
         item.preco = Number(produto.preco);
-
         item.imagem = produto.imagem || "";
-
         item.quantidade = Number(item.quantidade) || 1;
       }
     });

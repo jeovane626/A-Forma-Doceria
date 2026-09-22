@@ -17,21 +17,13 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   const produtosCheckout = document.getElementById("produtosCheckout");
-
   const subtotalCheckout = document.getElementById("subtotalCheckout");
-
   const freteCheckout = document.getElementById("freteCheckout");
-
   const totalCheckout = document.getElementById("totalCheckout");
-
   const formulario = document.getElementById("formularioPedido");
-
   const botaoConfirmar = document.getElementById("confirmarPedido");
-
   const areaFormulario = document.getElementById("areaFormulario");
-
   const resumoPedido = document.getElementById("resumoPedido");
-
   const acoesPedido = document.getElementById("acoesPedido");
 
   const FRETE = 10.0;
@@ -68,9 +60,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   async function sincronizarCarrinho() {
     try {
-      const resposta = await fetch(
-  `${API_URL}/api/produtos`
-)
+      const resposta = await fetch(`${API_URL}/api/produtos`);
 
       if (!resposta.ok) {
         throw new Error("Não foi possível carregar os produtos.");
@@ -157,9 +147,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     total = subtotal + FRETE;
 
     subtotalCheckout.textContent = formatarPreco(subtotal);
-
     freteCheckout.textContent = formatarPreco(FRETE);
-
     totalCheckout.textContent = formatarPreco(total);
   }
 
@@ -176,19 +164,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     event.preventDefault();
 
     const nome = document.getElementById("nome").value.trim();
-
     const telefone = document.getElementById("telefone").value.trim();
-
     const cep = document.getElementById("cep").value.trim();
-
     const rua = document.getElementById("rua").value.trim();
-
     const numero = document.getElementById("numero").value.trim();
-
     const complemento = document.getElementById("complemento").value.trim();
-
     const bairro = document.getElementById("bairro").value.trim();
-
     const cidade = document.getElementById("cidade").value.trim();
 
     const pagamentoSelecionado = document.querySelector(
@@ -197,24 +178,21 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     if (!pagamentoSelecionado) {
       alert("Escolha uma forma de pagamento.");
-
       return;
     }
 
     const pagamento = pagamentoSelecionado.value;
 
-    let mensagem = "🍮 Á FORMA, DOCERIA\n\n";
+    let mensagem = "A FORMA DOCERIA\n\n";
 
     mensagem += "NOVO PEDIDO\n\n";
 
     mensagem += "Cliente: " + nome + "\n";
-
     mensagem += "Telefone: " + telefone + "\n\n";
 
     mensagem += "ENDEREÇO DE ENTREGA\n";
 
     mensagem += "CEP: " + cep + "\n";
-
     mensagem += "Rua: " + rua + ", Nº " + numero + "\n";
 
     if (complemento !== "") {
@@ -222,7 +200,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     mensagem += "Bairro: " + bairro + "\n";
-
     mensagem += "Cidade: " + cidade + "\n\n";
 
     mensagem += "PRODUTOS\n\n";
@@ -232,18 +209,14 @@ document.addEventListener("DOMContentLoaded", async function () {
         Number(produto.preco) * Number(produto.quantidade);
 
       mensagem += produto.nome + "\n";
-
       mensagem += "Quantidade: " + produto.quantidade + "\n";
-
       mensagem += "Subtotal: " + formatarPreco(subtotalProduto) + "\n\n";
     });
 
     mensagem += "VALORES\n";
 
     mensagem += "Subtotal: " + formatarPreco(subtotal) + "\n";
-
     mensagem += "Frete: " + formatarPreco(FRETE) + "\n";
-
     mensagem += "Total: " + formatarPreco(total) + "\n\n";
 
     mensagem += "Pagamento: " + pagamento;

@@ -82,23 +82,15 @@ body > a:hover {
     text-decoration: underline;
 }
 
-#Chamar {
-    text-align: center;
-    font-size: 30px;
-    color: #7a4b28;
-    margin-top: 50px;
-    padding: 0 20px;
-}
-
 main {
     width: 100%;
 }
 
-#pudins {
+#produtos {
     margin-top: 60px;
 }
 
-#pudins h2 {
+#produtos h2 {
     text-align: center;
     font-size: 36px;
     color: #7a4b28;
@@ -270,16 +262,11 @@ footer p {
         font-size: 21px;
     }
 
-    #Chamar {
-        font-size: 26px;
-        margin-top: 40px;
-    }
-
-    #pudins {
+    #produtos {
         margin-top: 45px;
     }
 
-    #pudins h2 {
+    #produtos h2 {
         font-size: 30px;
     }
 
@@ -338,11 +325,7 @@ footer p {
         top: 15px;
     }
 
-    #Chamar {
-        font-size: 23px;
-    }
-
-    #pudins h2 {
+    #produtos h2 {
         font-size: 27px;
     }
 
