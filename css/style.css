@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #FAF1DE;
@@ -11,350 +15,607 @@ body {
     min-height: 100vh;
 }
 
+
+/* =========================
+   CABEÇALHO
+========================= */
+
 header {
     background-color: #fff8f0;
-    padding: 20px;
-    border-bottom: 2px solid #d8b17a;
+    padding: 22px 6%;
+    border-bottom: 1px solid #e6d3bd;
+
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    position: relative;
 }
 
 .marca {
-    text-align: center;
-    max-width: 700px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
 }
 
 .logo {
-    width: 120px;
-    height: 120px;
+    width: 105px;
+    height: 105px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.marca h1 {
-    margin-top: 10px;
-    font-size: 2rem;
+.marca-texto h1 {
     color: #7a4b28;
+    font-size: 2.2rem;
+    margin-bottom: 6px;
 }
 
-.marca p {
-    margin-top: 8px;
+.marca-texto p {
+    color: #555;
     font-size: 1rem;
-    color: #666;
-    line-height: 1.5;
+    line-height: 1.4;
+    max-width: 430px;
 }
 
-header > a {
+.link-carrinho {
     text-decoration: none;
 }
 
 .carrinho {
-    position: absolute;
-    top: 25px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
     border: none;
-    border-radius: 50%;
-    background-color: #c98a42;
-    color: white;
-    font-size: 24px;
+    background: transparent;
+    font-size: 34px;
     cursor: pointer;
-    transition: 0.3s;
+
+    transition:
+        transform 0.2s ease;
 }
 
 .carrinho:hover {
-    background-color: #a66b2d;
+    transform: scale(1.1);
 }
 
-body > a {
-    display: block;
-    width: fit-content;
-    margin: 30px auto 0;
-    color: #7a4b28;
-    font-weight: bold;
-    text-decoration: none;
-}
 
-body > a:hover {
-    text-decoration: underline;
-}
+/* =========================
+   CATEGORIAS
+========================= */
 
-main {
+.categorias {
     width: 100%;
-}
 
-#produtos {
-    margin-top: 60px;
-}
-
-#produtos h2 {
-    text-align: center;
-    font-size: 36px;
-    color: #7a4b28;
-    padding: 0 20px;
-}
-
-.descricao {
-    text-align: center;
-    margin-top: 15px;
-    color: #666;
-    padding: 0 20px;
-    line-height: 1.5;
-}
-
-.produtos {
     display: flex;
     justify-content: center;
-    align-items: stretch;
-    gap: 40px;
-    flex-wrap: wrap;
-    margin-top: 40px;
-    padding: 0 20px;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 18px 20px;
+
+    background-color: #fff8f0;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+}
+
+.categorias::-webkit-scrollbar {
+    display: none;
+}
+
+.categoria {
+    flex-shrink: 0;
+
+    border: none;
+
+    background-color: #f3e4cf;
+
+    color: #4a2c2a;
+
+    padding: 12px 22px;
+
+    border-radius: 25px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.categoria:hover {
+    transform: translateY(-2px);
+    background-color: #ead4b8;
+}
+
+.categoria.ativa {
+    background-color: #7a4b28;
+    color: white;
+}
+
+
+/* =========================
+   PRODUTOS
+========================= */
+
+#produtos {
+    width: 100%;
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+    padding: 55px 25px 70px;
+}
+
+.titulo-produtos {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.titulo-produtos h2 {
+    font-size: 2.5rem;
+    color: #7a4b28;
+    margin-bottom: 10px;
+}
+
+.titulo-produtos p {
+    color: #666;
+    font-size: 1.05rem;
+}
+
+
+/* =========================
+   LISTA DE PRODUTOS
+========================= */
+
+.produtos {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
 }
 
 .produtos article {
+    background-color: #fffaf4;
+
+    border: 1px solid #e7d7c5;
+
+    border-radius: 14px;
+
+    padding: 10px;
+
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    width: 300px;
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+    min-width: 0;
+
+    box-shadow:
+        0 4px 12px rgba(74, 44, 42, 0.08);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.produtos article:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 20px rgba(74, 44, 42, 0.13);
 }
 
 .produtos article img {
     width: 100%;
-    height: 220px;
+    height: 240px;
+
     object-fit: cover;
+
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .produtos article h4 {
-    margin-top: 5px;
-    font-size: 24px;
-    color: #7a4b28;
-    text-align: center;
+    color: #4a2c2a;
+
+    font-size: 1.25rem;
+
+    margin:
+        15px 5px 7px;
+}
+
+.produtos article p {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .produtos article p:nth-of-type(1) {
-    font-size: 28px;
-    color: #b76e1b;
+    color: #7a4b28;
+
+    font-size: 1.35rem;
+
     font-weight: bold;
+
+    margin-top: 8px;
 }
 
 .produtos article p:nth-of-type(2) {
-    margin-top: 5px;
     color: #555;
+
     line-height: 1.5;
-    text-align: center;
+
+    margin-top: 6px;
+    margin-bottom: 15px;
 }
 
 .produtos article button {
-    width: 100%;
-    padding: 15px;
+    width: calc(100% - 10px);
+
+    margin:
+        auto 5px 5px;
+
+    padding: 13px;
+
     border: none;
-    border-radius: 10px;
-    background: #c98a42;
+
+    border-radius: 9px;
+
+    background-color: #7a4b28;
+
     color: white;
-    font-size: 18px;
+
+    font-size: 15px;
+    font-weight: bold;
+
     cursor: pointer;
-    transition: 0.3s;
-    margin-top: auto;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .produtos article button:hover {
-    background: #a66b2d;
-}
-
-.vantagens {
-    margin-top: 70px;
-    background: #fff8f0;
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.vantagens h4 {
-    font-size: 24px;
-    color: #7a4b28;
-    margin-bottom: 20px;
-}
-
-.vantagens p {
-    margin: 10px auto;
-    color: #555;
-    line-height: 1.5;
-    max-width: 800px;
-}
-
-footer {
-    margin-top: 70px;
-    background: #7a4b28;
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
-}
-
-footer a {
-    color: white;
-    margin: 20px;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-footer p {
-    margin: 20px;
-    color: white;
+    background-color: #5f351c;
+    transform: translateY(-1px);
 }
 
 #carregandoProdutos {
-    width: 100%;
+    grid-column: 1 / -1;
+
     text-align: center;
+
     color: #666;
+
+    padding: 40px;
 }
+
+
+/* =========================
+   VANTAGENS
+========================= */
+
+.vantagens {
+    background-color: #fff8f0;
+
+    padding: 45px 6%;
+}
+
+.vantagens > h2 {
+    text-align: center;
+
+    color: #7a4b28;
+
+    font-size: 1.8rem;
+
+    margin-bottom: 35px;
+}
+
+.lista-vantagens {
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 40px;
+}
+
+.vantagem {
+    text-align: center;
+}
+
+.icone-vantagem {
+    display: block;
+
+    font-size: 34px;
+
+    margin-bottom: 10px;
+}
+
+.vantagem h3 {
+    color: #4a2c2a;
+
+    font-size: 1.05rem;
+
+    margin-bottom: 7px;
+}
+
+.vantagem p {
+    color: #555;
+
+    line-height: 1.5;
+
+    font-size: 0.95rem;
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+    background-color: #7a4b28;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 28px 20px;
+}
+
+.redes-sociais {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 30px;
+
+    margin-bottom: 18px;
+}
+
+.redes-sociais a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    transition: opacity 0.2s ease;
+}
+
+.redes-sociais a:hover {
+    opacity: 0.8;
+}
+
+#copyright {
+    color: white;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
 
 @media (max-width: 900px) {
+
     .produtos {
-        gap: 25px;
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
     }
 
-    .produtos article {
-        width: calc(50% - 20px);
-        max-width: 340px;
+    .categorias {
+        justify-content: flex-start;
     }
+
 }
 
-@media (max-width: 700px) {
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 650px) {
+
     header {
-        padding: 20px 70px 30px 20px;
+        padding: 18px 16px;
     }
 
     .marca {
-        width: 100%;
+        gap: 12px;
     }
 
     .logo {
-        width: 100px;
-        height: 100px;
+        width: 70px;
+        height: 70px;
     }
 
-    .marca h1 {
-        font-size: 1.7rem;
+    .marca-texto h1 {
+        font-size: 1.35rem;
     }
 
-    .marca p {
-        font-size: 0.95rem;
-    }
+    .marca-texto p {
+        font-size: 0.8rem;
 
-    .carrinho {
-        top: 20px;
-        right: 15px;
-        width: 46px;
-        height: 46px;
-        font-size: 21px;
-    }
-
-    #produtos {
-        margin-top: 45px;
-    }
-
-    #produtos h2 {
-        font-size: 30px;
-    }
-
-    .produtos {
-        gap: 25px;
-        padding: 0 15px;
-    }
-
-    .produtos article {
-        width: 100%;
-        max-width: 380px;
-    }
-
-    .produtos article img {
-        height: 240px;
-    }
-
-    .vantagens {
-        margin-top: 50px;
-        padding: 30px 20px;
-    }
-
-    footer {
-        margin-top: 50px;
-    }
-
-    footer a {
-        display: block;
-        margin: 15px;
-    }
-}
-
-@media (max-width: 420px) {
-    header {
-        padding: 18px 60px 25px 15px;
-    }
-
-    .logo {
-        width: 85px;
-        height: 85px;
-    }
-
-    .marca h1 {
-        font-size: 1.45rem;
-    }
-
-    .marca p {
-        font-size: 0.9rem;
+        max-width: 210px;
     }
 
     .carrinho {
-        width: 42px;
-        height: 42px;
-        font-size: 19px;
-        right: 10px;
-        top: 15px;
-    }
-
-    #produtos h2 {
         font-size: 27px;
     }
 
-    .descricao {
+
+    /* Categorias */
+
+    .categorias {
+        justify-content: flex-start;
+
+        padding:
+            14px 15px;
+
+        gap: 8px;
+    }
+
+    .categoria {
+        padding:
+            10px 16px;
+
+        font-size: 13px;
+    }
+
+
+    /* Produtos */
+
+    #produtos {
+        padding:
+            40px 15px 50px;
+    }
+
+    .titulo-produtos {
+        margin-bottom: 30px;
+    }
+
+    .titulo-produtos h2 {
+        font-size: 2rem;
+    }
+
+    .titulo-produtos p {
         font-size: 0.95rem;
     }
 
+    .produtos {
+        display: flex;
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
     .produtos article {
-        padding: 16px;
+        display: grid;
+
+        grid-template-columns:
+            130px 1fr;
+
+        grid-template-rows:
+            auto auto auto 1fr;
+
+        column-gap: 14px;
+
+        padding: 8px;
     }
 
     .produtos article img {
-        height: 210px;
+        width: 130px;
+        height: 160px;
+
+        grid-row:
+            1 / 5;
+
+        border-radius: 8px;
     }
 
     .produtos article h4 {
-        font-size: 21px;
+        margin:
+            8px 4px 2px;
+
+        font-size: 1.05rem;
     }
 
     .produtos article p:nth-of-type(1) {
-        font-size: 24px;
+        font-size: 1.1rem;
+
+        margin:
+            4px;
+    }
+
+    .produtos article p:nth-of-type(2) {
+        font-size: 0.88rem;
+
+        margin:
+            3px 4px 8px;
+
+        line-height: 1.35;
     }
 
     .produtos article button {
-        font-size: 16px;
-        padding: 13px;
+        width: calc(100% - 8px);
+
+        margin:
+            auto 4px 4px;
+
+        padding:
+            10px 6px;
+
+        font-size: 12px;
     }
 
-    .vantagens h4 {
-        font-size: 21px;
+
+    /* Vantagens */
+
+    .vantagens {
+        padding:
+            35px 20px;
     }
+
+    .vantagens > h2 {
+        font-size: 1.45rem;
+    }
+
+    .lista-vantagens {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+
+    /* Rodapé */
+
+    .redes-sociais {
+        flex-direction: column;
+
+        gap: 14px;
+    }
+
+}
+
+
+/* =========================
+   CELULARES PEQUENOS
+========================= */
+
+@media (max-width: 390px) {
+
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .marca-texto h1 {
+        font-size: 1.15rem;
+    }
+
+    .marca-texto p {
+        font-size: 0.73rem;
+    }
+
+    .produtos article {
+        grid-template-columns:
+            110px 1fr;
+    }
+
+    .produtos article img {
+        width: 110px;
+        height: 150px;
+    }
+
 }

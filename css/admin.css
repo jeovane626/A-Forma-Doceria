@@ -131,6 +131,12 @@ main {
     color: #555;
 }
 
+.categoria-produto {
+    font-size: 14px;
+    font-weight: bold;
+    color: #6b3e26 !important;
+}
+
 .preco {
     font-size: 20px;
     font-weight: bold;
@@ -198,7 +204,8 @@ main {
 }
 
 .form-produto input,
-.form-produto textarea {
+.form-produto textarea,
+.form-produto select {
     width: 100%;
     padding: 12px;
     border: 1px solid #d8b17a;
@@ -207,14 +214,20 @@ main {
     font-size: 15px;
     outline: none;
     background-color: #fffdfb;
+    color: #4a2c2a;
     transition: 0.2s;
 }
 
 .form-produto input:focus,
-.form-produto textarea:focus {
+.form-produto textarea:focus,
+.form-produto select:focus {
     border-color: #c98a42;
     box-shadow:
         0 0 0 3px rgba(201, 138, 66, 0.12);
+}
+
+.form-produto select {
+    cursor: pointer;
 }
 
 .form-produto textarea {
@@ -384,7 +397,8 @@ main {
     }
 
     .form-produto input,
-    .form-produto textarea {
+    .form-produto textarea,
+    .form-produto select {
         font-size: 14px;
         padding: 11px;
     }

@@ -18,66 +18,100 @@
           alt="Logo da A Forma Doceria"
         />
 
-        <h1>A Forma Doceria</h1>
-
-        <p>
-          Delícias feitas com carinho para adoçar os seus melhores momentos.
-        </p>
+        <div class="marca-texto">
+          <h1>A Forma Doceria</h1>
+          <p>
+            Sobremesas feitas com carinho para adoçar os seus melhores momentos.
+          </p>
+        </div>
       </div>
 
-      <a href="carrinho.html">
+      <a href="carrinho.html" class="link-carrinho">
         <button type="button" class="carrinho" aria-label="Abrir carrinho">
           🛒
         </button>
       </a>
     </header>
 
-    <a href="#produtos">Ver Produtos</a>
+    <!-- CATEGORIAS -->
+    <nav class="categorias" aria-label="Categorias de produtos">
+      <button class="categoria ativa" type="button">Todos</button>
+
+      <button class="categoria" type="button"> Picolé Gourmet</button>
+
+      <button class="categoria" type="button"> Brownie</button>
+
+      <button class="categoria" type="button"> Pudins</button>
+
+      <button class="categoria" type="button"> Tortas</button>
+
+      <button class="categoria" type="button">••• Outros</button>
+    </nav>
 
     <main>
       <section id="produtos">
-        <h2>Nossas Delícias</h2>
+        <div class="titulo-produtos">
+          <h2>Nossas Delícias</h2>
 
-        <p class="descricao">
-          Descubra nossas delícias preparadas com carinho especialmente para
-          você!
-        </p>
+          <p>Descubra o sabor que combina com o seu momento!</p>
+        </div>
 
         <div class="produtos" id="listaProdutosLoja">
           <p id="carregandoProdutos">Carregando produtos...</p>
         </div>
       </section>
+
+      <!-- VANTAGENS -->
+
+      <section class="vantagens">
+        <h2>Por que escolher a A Forma Doceria?</h2>
+
+        <div class="lista-vantagens">
+          <div class="vantagem">
+            <span class="icone-vantagem">🚚</span>
+
+            <h3>Delivery</h3>
+
+            <p>Receba no conforto da sua casa.</p>
+          </div>
+
+          <div class="vantagem">
+            <span class="icone-vantagem">🤎</span>
+
+            <h3>Ingredientes de Qualidade</h3>
+
+            <p>Produtos preparados com muito carinho.</p>
+          </div>
+
+          <div class="vantagem">
+            <span class="icone-vantagem">💳</span>
+
+            <h3>Diversas Formas de Pagamento</h3>
+
+            <p>Cartão, Dinheiro e Pix.</p>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <div class="vantagens">
-      <h4>Por que escolher a A Forma Doceria?</h4>
-
-      <p>
-        Oferecemos produtos preparados com ingredientes selecionados, qualidade
-        e muito carinho para tornar cada momento ainda mais especial.
-      </p>
-
-      <p>Delivery</p>
-
-      <p>Formas de Pagamento: Cartão, Dinheiro, Pix</p>
-    </div>
-
     <footer>
-      <a
-        href="https://www.instagram.com/aformadoceria.ofc"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Instagram
-      </a>
+      <div class="redes-sociais">
+        <a
+          href="https://www.instagram.com/aformadoceria.ofc"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          📷 Instagram
+        </a>
 
-      <a
-        href="https://wa.me/558192519761"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Fale conosco no WhatsApp
-      </a>
+        <a
+          href="https://wa.me/558192519761"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          💬 Fale conosco no WhatsApp
+        </a>
+      </div>
 
       <p id="copyright">
         &copy; 2026 A Forma Doceria. Todos os direitos reservados.
