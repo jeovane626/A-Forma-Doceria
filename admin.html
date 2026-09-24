@@ -20,6 +20,54 @@
     </header>
 
     <main>
+      <!-- =========================
+           CATEGORIAS
+      ========================== -->
+
+      <section class="topo-painel topo-categorias">
+        <div>
+          <h2>Categorias</h2>
+
+          <p>Crie e gerencie as categorias exibidas na loja.</p>
+        </div>
+
+        <button id="botaoNovaCategoria" type="button">+ Nova Categoria</button>
+      </section>
+
+      <section id="formCategoriaContainer" class="form-categoria oculto">
+        <h2 id="tituloFormularioCategoria">Cadastrar Categoria</h2>
+
+        <form id="formCategoria">
+          <input type="hidden" id="categoriaId" />
+
+          <label for="nomeCategoria"> Nome da Categoria </label>
+
+          <input
+            type="text"
+            id="nomeCategoria"
+            maxlength="50"
+            placeholder="Ex.: Brownies"
+            required
+          />
+
+          <div class="botoes-formulario">
+            <button type="submit" class="salvar">Salvar Categoria</button>
+
+            <button type="button" id="cancelarCategoria" class="cancelar">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <p id="mensagemCategoria"></p>
+
+      <section id="listaCategoriasAdmin" class="lista-categorias"></section>
+
+      <!-- =========================
+           PRODUTOS
+      ========================== -->
+
       <section class="topo-painel">
         <div>
           <h2>Produtos</h2>
@@ -48,11 +96,6 @@
 
           <select id="categoriaProduto" required>
             <option value="">Selecione uma categoria</option>
-            <option value="Pudins">🍮 Pudins</option>
-            <option value="Bolos">🎂 Bolos</option>
-            <option value="Tortas">🍰 Tortas</option>
-            <option value="Doces">🧁 Doces</option>
-            <option value="Outros">Outros</option>
           </select>
 
           <label for="precoProduto"> Preço </label>

@@ -11,6 +11,11 @@ body {
     min-height: 100vh;
 }
 
+
+/* =========================
+   CABEÇALHO
+========================= */
+
 header {
     background-color: #6b3e26;
     color: white;
@@ -52,6 +57,11 @@ button:hover {
     background-color: #ead8c8;
 }
 
+
+/* =========================
+   CONTEÚDO PRINCIPAL
+========================= */
+
 main {
     width: 90%;
     max-width: 1100px;
@@ -77,6 +87,152 @@ main {
     line-height: 1.4;
 }
 
+
+/* =========================
+   CATEGORIAS
+========================= */
+
+.topo-categorias {
+    margin-bottom: 25px;
+}
+
+#botaoNovaCategoria {
+    background-color: #c98a42;
+    color: white;
+    flex-shrink: 0;
+}
+
+#botaoNovaCategoria:hover {
+    background-color: #a66b2d;
+}
+
+#mensagemCategoria {
+    margin-bottom: 20px;
+    color: #6b3e26;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+.lista-categorias {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+
+    margin-bottom: 55px;
+}
+
+.categoria-admin {
+    background-color: white;
+    border-radius: 12px;
+    padding: 18px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.categoria-admin h3 {
+    color: #6b3e26;
+    font-size: 18px;
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+.acoes-categoria {
+    display: flex;
+    gap: 10px;
+}
+
+.acoes-categoria button {
+    flex: 1;
+}
+
+.editar-categoria {
+    background-color: #c98a42;
+    color: white;
+}
+
+.editar-categoria:hover {
+    background-color: #a66b2d;
+}
+
+.excluir-categoria {
+    background-color: #8b3a3a;
+    color: white;
+}
+
+.excluir-categoria:hover {
+    background-color: #6f2f2f;
+}
+
+
+/* =========================
+   FORMULÁRIO DE CATEGORIA
+========================= */
+
+.form-categoria {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.form-categoria h2 {
+    color: #6b3e26;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.form-categoria form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-categoria label {
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 6px;
+    color: #6b3e26;
+}
+
+.form-categoria input {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid #d8b17a;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    outline: none;
+
+    background-color: #fffdfb;
+    color: #4a2c2a;
+
+    transition: 0.2s;
+}
+
+.form-categoria input:focus {
+    border-color: #c98a42;
+
+    box-shadow:
+        0 0 0 3px rgba(201, 138, 66, 0.12);
+}
+
+
+/* =========================
+   PRODUTOS
+========================= */
+
 #botaoNovoProduto {
     background-color: #c98a42;
     color: white;
@@ -96,8 +252,10 @@ main {
 
 .lista-produtos {
     display: grid;
+
     grid-template-columns:
         repeat(auto-fit, minmax(250px, 1fr));
+
     gap: 20px;
 }
 
@@ -105,8 +263,10 @@ main {
     background-color: white;
     border-radius: 15px;
     padding: 20px;
+
     box-shadow:
         0 5px 15px rgba(0, 0, 0, 0.12);
+
     display: flex;
     flex-direction: column;
 }
@@ -114,39 +274,53 @@ main {
 .produto-admin img {
     width: 100%;
     height: 190px;
+
     object-fit: cover;
+
     border-radius: 10px;
+
     margin-bottom: 15px;
 }
 
 .produto-admin h3 {
     color: #6b3e26;
+
     margin-bottom: 10px;
+
     line-height: 1.3;
 }
 
 .produto-admin p {
     margin-bottom: 10px;
+
     line-height: 1.4;
+
     color: #555;
 }
 
 .categoria-produto {
     font-size: 14px;
+
     font-weight: bold;
+
     color: #6b3e26 !important;
 }
 
 .preco {
     font-size: 20px;
+
     font-weight: bold;
+
     color: #b76e1b !important;
 }
 
 .acoes-produto {
     display: flex;
+
     gap: 10px;
+
     margin-top: auto;
+
     padding-top: 15px;
 }
 
@@ -172,22 +346,29 @@ main {
     background-color: #6f2f2f;
 }
 
-.oculto {
-    display: none;
-}
+
+/* =========================
+   FORMULÁRIO DE PRODUTO
+========================= */
 
 .form-produto {
     background-color: white;
+
     padding: 25px;
+
     border-radius: 15px;
+
     margin-bottom: 30px;
+
     box-shadow:
         0 5px 15px rgba(0, 0, 0, 0.12);
 }
 
 .form-produto h2 {
     color: #6b3e26;
+
     margin-bottom: 20px;
+
     font-size: 24px;
 }
 
@@ -198,8 +379,10 @@ main {
 
 .form-produto label {
     font-weight: bold;
+
     margin-top: 15px;
     margin-bottom: 6px;
+
     color: #6b3e26;
 }
 
@@ -207,14 +390,23 @@ main {
 .form-produto textarea,
 .form-produto select {
     width: 100%;
+
     padding: 12px;
+
     border: 1px solid #d8b17a;
+
     border-radius: 8px;
+
     font-family: inherit;
+
     font-size: 15px;
+
     outline: none;
+
     background-color: #fffdfb;
+
     color: #4a2c2a;
+
     transition: 0.2s;
 }
 
@@ -222,6 +414,7 @@ main {
 .form-produto textarea:focus,
 .form-produto select:focus {
     border-color: #c98a42;
+
     box-shadow:
         0 0 0 3px rgba(201, 138, 66, 0.12);
 }
@@ -232,12 +425,20 @@ main {
 
 .form-produto textarea {
     resize: vertical;
+
     min-height: 100px;
 }
 
+
+/* =========================
+   BOTÕES DOS FORMULÁRIOS
+========================= */
+
 .botoes-formulario {
     display: flex;
+
     gap: 10px;
+
     margin-top: 20px;
 }
 
@@ -263,33 +464,61 @@ main {
     background-color: #c7c7c7;
 }
 
+
+/* =========================
+   IMAGEM DO PRODUTO
+========================= */
+
 #imagemAtualContainer {
     margin-top: 15px;
 }
 
 #imagemAtual {
     color: #6b3e26;
+
     font-weight: bold;
+
     margin-bottom: 10px;
 }
 
 #previewImagemAtual {
     width: 180px;
     height: 180px;
+
     object-fit: cover;
+
     border-radius: 10px;
+
     border: 1px solid #d8b17a;
+
     display: block;
 }
 
 .form-produto input[type="file"] {
     background-color: #fff8f0;
+
     cursor: pointer;
 }
 
+
+/* =========================
+   ELEMENTOS OCULTOS
+========================= */
+
+.oculto {
+    display: none;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
 @media (max-width: 800px) {
+
     main {
         width: 94%;
+
         margin-top: 30px;
     }
 
@@ -298,15 +527,28 @@ main {
             repeat(auto-fit, minmax(220px, 1fr));
     }
 
+    .lista-categorias {
+        grid-template-columns:
+            repeat(auto-fit, minmax(200px, 1fr));
+    }
+
     .topo-painel {
         align-items: flex-start;
     }
 }
 
+
+/* =========================
+   CELULAR
+========================= */
+
 @media (max-width: 600px) {
+
     header {
         flex-direction: column;
+
         align-items: flex-start;
+
         padding: 20px;
     }
 
@@ -320,7 +562,9 @@ main {
 
     .topo-painel {
         flex-direction: column;
+
         align-items: stretch;
+
         gap: 20px;
     }
 
@@ -328,9 +572,42 @@ main {
         font-size: 24px;
     }
 
-    #botaoNovoProduto {
+    #botaoNovoProduto,
+    #botaoNovaCategoria {
         width: 100%;
     }
+
+
+    /* Categorias */
+
+    .lista-categorias {
+        grid-template-columns: 1fr;
+
+        margin-bottom: 45px;
+    }
+
+    .categoria-admin {
+        padding: 16px;
+    }
+
+    .acoes-categoria {
+        flex-direction: column;
+    }
+
+    .acoes-categoria button {
+        width: 100%;
+    }
+
+    .form-categoria {
+        padding: 20px;
+    }
+
+    .form-categoria h2 {
+        font-size: 21px;
+    }
+
+
+    /* Produtos */
 
     .lista-produtos {
         grid-template-columns: 1fr;
@@ -356,6 +633,9 @@ main {
         font-size: 21px;
     }
 
+
+    /* Formulários */
+
     .botoes-formulario {
         flex-direction: column;
     }
@@ -366,12 +646,20 @@ main {
 
     #previewImagemAtual {
         width: 100%;
+
         max-width: 220px;
+
         height: 200px;
     }
 }
 
+
+/* =========================
+   CELULARES PEQUENOS
+========================= */
+
 @media (max-width: 380px) {
+
     main {
         width: 96%;
     }
@@ -384,11 +672,13 @@ main {
         font-size: 21px;
     }
 
-    .form-produto {
+    .form-produto,
+    .form-categoria {
         padding: 16px;
     }
 
-    .produto-admin {
+    .produto-admin,
+    .categoria-admin {
         padding: 16px;
     }
 
@@ -398,8 +688,10 @@ main {
 
     .form-produto input,
     .form-produto textarea,
-    .form-produto select {
+    .form-produto select,
+    .form-categoria input {
         font-size: 14px;
+
         padding: 11px;
     }
 

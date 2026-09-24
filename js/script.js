@@ -1,10 +1,14 @@
 document.addEventListener("DOMContentLoaded", async function () {
   const listaProdutos = document.getElementById("listaProdutosLoja");
-  const botoesCategoria = document.querySelectorAll(".categoria");
+  const listaCategorias = document.getElementById("listaCategoriasLoja");
 
   let produtos = [];
   let carrinho = [];
   let categoriaSelecionada = "Todos";
+
+  // =========================
+  // CARRINHO
+  // =========================
 
   try {
     const dadosCarrinho = localStorage.getItem("carrinho");
@@ -66,6 +70,83 @@ document.addEventListener("DOMContentLoaded", async function () {
     alert(produto.nome + " foi adicionado ao carrinho!");
   }
 
+  // =========================
+  // CATEGORIAS
+  // =========================
+
+  function selecionarCategoria(botao) {
+    document.querySelectorAll(".categoria").forEach(function (item) {
+      item.classList.remove("ativa");
+    });
+
+    botao.classList.add("ativa");
+
+    categoriaSelecionada = botao.dataset.categoria;
+
+    mostrarProdutos();
+  }
+
+  function criarBotaoCategoria(nome) {
+    const botao = document.createElement("button");
+
+    botao.type = "button";
+    botao.classList.add("categoria");
+
+    botao.dataset.categoria = nome;
+
+    botao.textContent = nome;
+
+    botao.addEventListener("click", function () {
+      selecionarCategoria(botao);
+    });
+
+    return botao;
+  }
+
+  async function carregarCategorias() {
+    try {
+      const resposta = await fetch(`${API_URL}/api/categorias`);
+
+      if (!resposta.ok) {
+        throw new Error("Não foi possível carregar as categorias.");
+      }
+
+      const categorias = await resposta.json();
+
+      listaCategorias.innerHTML = "";
+
+      // Botão Todos
+      const botaoTodos = criarBotaoCategoria("Todos");
+
+      botaoTodos.classList.add("ativa");
+
+      listaCategorias.appendChild(botaoTodos);
+
+      // Categorias cadastradas no banco
+      categorias.forEach(function (categoria) {
+        const botao = criarBotaoCategoria(categoria.nome);
+
+        listaCategorias.appendChild(botao);
+      });
+    } catch (erro) {
+      console.error("Erro ao carregar categorias:", erro);
+
+      // Se houver algum problema na API,
+      // mantém pelo menos a opção "Todos".
+      listaCategorias.innerHTML = "";
+
+      const botaoTodos = criarBotaoCategoria("Todos");
+
+      botaoTodos.classList.add("ativa");
+
+      listaCategorias.appendChild(botaoTodos);
+    }
+  }
+
+  // =========================
+  // PRODUTOS
+  // =========================
+
   function mostrarProdutos() {
     listaProdutos.innerHTML = "";
 
@@ -78,11 +159,16 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     if (produtosFiltrados.length === 0) {
-      listaProdutos.innerHTML = `
-        <p class="sem-produtos">
-          Nenhum produto disponível nesta categoria.
-        </p>
-      `;
+      const mensagem = document.createElement("p");
+
+      mensagem.classList.add("sem-produtos");
+
+      mensagem.textContent =
+        categoriaSelecionada === "Todos"
+          ? "Nenhum produto disponível no momento."
+          : "Nenhum produto disponível nesta categoria.";
+
+      listaProdutos.appendChild(mensagem);
 
       return;
     }
@@ -90,119 +176,123 @@ document.addEventListener("DOMContentLoaded", async function () {
     produtosFiltrados.forEach(function (produto) {
       const article = document.createElement("article");
 
-      article.innerHTML = `
-        ${
-          produto.imagem
-            ? `
-              <img
-                src="${produto.imagem}"
-                alt="${produto.nome}"
-              >
-            `
-            : ""
-        }
+      if (produto.imagem) {
+        const imagem = document.createElement("img");
 
-        <h4>
-          ${produto.nome}
-        </h4>
+        imagem.src = produto.imagem;
+        imagem.alt = produto.nome;
 
-        <p>
-          ${formatarPreco(produto.preco)}
-        </p>
+        article.appendChild(imagem);
+      }
 
-        <p>
-          ${produto.descricao || ""}
-        </p>
+      const nome = document.createElement("h4");
 
-        <button
-          type="button"
-          class="adicionar-carrinho"
-          data-id="${produto.id}"
-        >
-          Adicionar ao Carrinho
-        </button>
-      `;
+      nome.textContent = produto.nome;
 
-      listaProdutos.appendChild(article);
-    });
+      article.appendChild(nome);
 
-    document.querySelectorAll(".adicionar-carrinho").forEach(function (botao) {
+      const preco = document.createElement("p");
+
+      preco.textContent = formatarPreco(produto.preco);
+
+      article.appendChild(preco);
+
+      const descricao = document.createElement("p");
+
+      descricao.textContent = produto.descricao || "";
+
+      article.appendChild(descricao);
+
+      const botao = document.createElement("button");
+
+      botao.type = "button";
+      botao.classList.add("adicionar-carrinho");
+
+      botao.dataset.id = produto.id;
+
+      botao.textContent = "Adicionar ao Carrinho";
+
       botao.addEventListener("click", function () {
         adicionarAoCarrinho(Number(botao.dataset.id));
       });
+
+      article.appendChild(botao);
+
+      listaProdutos.appendChild(article);
     });
   }
 
-  botoesCategoria.forEach(function (botao) {
-    botao.addEventListener("click", function () {
-      botoesCategoria.forEach(function (item) {
-        item.classList.remove("ativa");
+  async function carregarProdutos() {
+    try {
+      const resposta = await fetch(`${API_URL}/api/produtos`);
+
+      if (!resposta.ok) {
+        throw new Error("Não foi possível carregar os produtos.");
+      }
+
+      produtos = await resposta.json();
+
+      produtos = produtos.map(function (produto) {
+        return {
+          ...produto,
+
+          id: Number(produto.id),
+
+          preco: Number(produto.preco),
+
+          categoria: produto.categoria || "Outros",
+        };
       });
 
-      botao.classList.add("ativa");
+      // Remove do carrinho produtos
+      // que não estão mais disponíveis.
+      carrinho = carrinho.filter(function (item) {
+        return produtos.some(function (produto) {
+          return Number(produto.id) === Number(item.id);
+        });
+      });
 
-      categoriaSelecionada = botao.textContent
-        .replace("🍮", "")
-        .replace("🎂", "")
-        .replace("🍰", "")
-        .replace("🧁", "")
-        .replace("•••", "")
-        .trim();
+      // Atualiza dados dos produtos
+      // que já estavam no carrinho.
+      carrinho.forEach(function (item) {
+        const produto = produtos.find(function (produto) {
+          return Number(produto.id) === Number(item.id);
+        });
+
+        if (produto) {
+          item.nome = produto.nome;
+
+          item.preco = Number(produto.preco);
+
+          item.imagem = produto.imagem || "";
+
+          item.quantidade = Number(item.quantidade) || 1;
+        }
+      });
+
+      salvarCarrinho();
 
       mostrarProdutos();
-    });
-  });
+    } catch (erro) {
+      console.error("Erro ao buscar produtos:", erro);
 
-  try {
-    const resposta = await fetch(`${API_URL}/api/produtos`);
+      listaProdutos.innerHTML = "";
 
-    if (!resposta.ok) {
-      throw new Error("Não foi possível carregar os produtos.");
+      const mensagem = document.createElement("p");
+
+      mensagem.classList.add("sem-produtos");
+
+      mensagem.textContent = "Não foi possível carregar os produtos.";
+
+      listaProdutos.appendChild(mensagem);
     }
-
-    produtos = await resposta.json();
-
-    produtos = produtos.map(function (produto) {
-      return {
-        ...produto,
-
-        id: Number(produto.id),
-
-        preco: Number(produto.preco),
-
-        categoria: produto.categoria || "Outros",
-      };
-    });
-
-    carrinho = carrinho.filter(function (item) {
-      return produtos.some(function (produto) {
-        return Number(produto.id) === Number(item.id);
-      });
-    });
-
-    carrinho.forEach(function (item) {
-      const produto = produtos.find(function (produto) {
-        return Number(produto.id) === Number(item.id);
-      });
-
-      if (produto) {
-        item.nome = produto.nome;
-        item.preco = Number(produto.preco);
-        item.imagem = produto.imagem || "";
-        item.quantidade = Number(item.quantidade) || 1;
-      }
-    });
-
-    salvarCarrinho();
-
-    mostrarProdutos();
-  } catch (erro) {
-    console.error("Erro ao buscar produtos:", erro);
-
-    listaProdutos.innerHTML = `
-      <p class="sem-produtos">
-        Não foi possível carregar os produtos.
-      </p>
-    `;
   }
+
+  // =========================
+  // INICIALIZAÇÃO
+  // =========================
+
+  await carregarCategorias();
+
+  await carregarProdutos();
 });

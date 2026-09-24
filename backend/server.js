@@ -10,13 +10,17 @@ const pool = require("./config/database");
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/admin.Routes");
 const productRoutes = require("./routes/productRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
 
 const app = express();
 
 const origemProducao = process.env.FRONTEND_ORIGIN;
 
+// =========================
 // CORS
+// =========================
+
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -36,101 +40,112 @@ app.use(
 
       console.error("Origem bloqueada pelo CORS:", origin);
 
-      return callback(
-        new Error("Origem não permitida pelo CORS.")
-      );
+      return callback(new Error("Origem não permitida pelo CORS."));
     },
 
-    methods: [
-      "GET",
-      "POST",
-      "PUT",
-      "DELETE",
-      "OPTIONS"
-    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization"
-    ]
-  })
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
 );
 
-// Permite JSON
+// =========================
+// DADOS RECEBIDOS
+// =========================
+
 app.use(express.json());
 
-// Permite formulários
 app.use(
   express.urlencoded({
-    extended: true
-  })
+    extended: true,
+  }),
 );
 
-// Headers de segurança
+// =========================
+// SEGURANÇA
+// =========================
+
 app.use(helmet());
 
-// Limite geral de requisições
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
   standardHeaders: true,
-  legacyHeaders: false
+  legacyHeaders: false,
 });
 
 app.use(limiter);
 
-// Rotas
+// =========================
+// ROTAS
+// =========================
+
 app.use("/api/auth", authRoutes);
+
 app.use("/api/admin", adminRoutes);
+
 app.use("/api/produtos", productRoutes);
+
+app.use("/api/categorias", categoryRoutes);
+
 app.use("/api/upload", uploadRoutes);
 
-// Rota principal
+// =========================
+// ROTA PRINCIPAL
+// =========================
+
 app.get("/", (req, res) => {
   res.json({
-    mensagem: "Backend da A Forma Doceria funcionando!"
+    mensagem: "Backend da A Forma Doceria funcionando!",
   });
 });
 
-// Teste do banco
+// =========================
+// TESTE DO BANCO
+// =========================
+
 app.get("/api/teste-banco", async (req, res) => {
   try {
-    const resultado = await pool.query(
-      "SELECT NOW() AS data_atual"
-    );
+    const resultado = await pool.query("SELECT NOW() AS data_atual");
 
     res.json({
       mensagem: "Conexão com o banco realizada com sucesso!",
-      banco: resultado.rows[0]
+
+      banco: resultado.rows[0],
     });
   } catch (erro) {
     console.error("Erro ao testar banco:", erro);
 
     res.status(500).json({
-      erro: "Não foi possível conectar ao banco de dados."
+      erro: "Não foi possível conectar ao banco de dados.",
     });
   }
 });
 
-// Tratamento geral de erros
+// =========================
+// TRATAMENTO DE ERROS
+// =========================
+
 app.use((erro, req, res, next) => {
   console.error("Erro no servidor:", erro.message);
 
   if (erro.message === "Origem não permitida pelo CORS.") {
     return res.status(403).json({
-      erro: "Origem não permitida."
+      erro: "Origem não permitida.",
     });
   }
 
   return res.status(500).json({
-    erro: "Erro interno do servidor."
+    erro: "Erro interno do servidor.",
   });
 });
+
+// =========================
+// INICIAR SERVIDOR
+// =========================
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(
-    `Servidor rodando em http://localhost:${PORT}`
-  );
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
