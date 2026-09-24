@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", async function () {
   const listaProdutos = document.getElementById("listaProdutosLoja");
+  const botoesCategoria = document.querySelectorAll(".categoria");
 
   let produtos = [];
   let carrinho = [];
+  let categoriaSelecionada = "Todos";
 
   try {
     const dadosCarrinho = localStorage.getItem("carrinho");
@@ -67,17 +69,25 @@ document.addEventListener("DOMContentLoaded", async function () {
   function mostrarProdutos() {
     listaProdutos.innerHTML = "";
 
-    if (produtos.length === 0) {
+    let produtosFiltrados = produtos;
+
+    if (categoriaSelecionada !== "Todos") {
+      produtosFiltrados = produtos.filter(function (produto) {
+        return produto.categoria === categoriaSelecionada;
+      });
+    }
+
+    if (produtosFiltrados.length === 0) {
       listaProdutos.innerHTML = `
-        <p>
-          Nenhum produto disponível no momento.
+        <p class="sem-produtos">
+          Nenhum produto disponível nesta categoria.
         </p>
       `;
 
       return;
     }
 
-    produtos.forEach(function (produto) {
+    produtosFiltrados.forEach(function (produto) {
       const article = document.createElement("article");
 
       article.innerHTML = `
@@ -123,6 +133,26 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
   }
 
+  botoesCategoria.forEach(function (botao) {
+    botao.addEventListener("click", function () {
+      botoesCategoria.forEach(function (item) {
+        item.classList.remove("ativa");
+      });
+
+      botao.classList.add("ativa");
+
+      categoriaSelecionada = botao.textContent
+        .replace("🍮", "")
+        .replace("🎂", "")
+        .replace("🍰", "")
+        .replace("🧁", "")
+        .replace("•••", "")
+        .trim();
+
+      mostrarProdutos();
+    });
+  });
+
   try {
     const resposta = await fetch(`${API_URL}/api/produtos`);
 
@@ -135,8 +165,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     produtos = produtos.map(function (produto) {
       return {
         ...produto,
+
         id: Number(produto.id),
+
         preco: Number(produto.preco),
+
+        categoria: produto.categoria || "Outros",
       };
     });
 
@@ -166,7 +200,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.error("Erro ao buscar produtos:", erro);
 
     listaProdutos.innerHTML = `
-      <p>
+      <p class="sem-produtos">
         Não foi possível carregar os produtos.
       </p>
     `;

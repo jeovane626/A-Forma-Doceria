@@ -291,6 +291,17 @@ header {
     padding: 40px;
 }
 
+/* Mensagem exibida quando uma categoria não possui produtos */
+
+.sem-produtos {
+    grid-column: 1 / -1;
+    width: 100%;
+    text-align: center;
+    color: #666;
+    padding: 40px 20px;
+    font-size: 16px;
+}
+
 
 /* =========================
    VANTAGENS
@@ -617,5 +628,4 @@ footer {
         width: 110px;
         height: 150px;
     }
-
 }
